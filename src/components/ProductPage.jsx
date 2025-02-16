@@ -27,7 +27,7 @@ function ProductPage({ language }) {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* Breadcrumb */}
-      <div className="text-sm mb-4 text-center">
+      <div className="text-sm mb-4 text-left" style={{ marginLeft: '160px' }}>
         <span className="text-gray-500">Homepage / Women / Women's Shirts & Tops / </span>
         <span>{translations[language].productTitle}</span>
       </div>

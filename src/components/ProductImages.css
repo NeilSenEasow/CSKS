@@ -1,0 +1,11 @@
+.carousel-image {
+  width: 100%; /* Default width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+  .carousel-image {
+    max-width: 90%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the image */
+  }
+} 

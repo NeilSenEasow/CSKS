@@ -1,5 +1,6 @@
 import { Box, Typography, Button, Grid, Paper } from '@mui/material';
 import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
+import { translations } from '../translations';
 
 const reviews = [
   {
@@ -28,11 +29,11 @@ const reviews = [
   }
 ];
 
-function ProductReviews() {
+function ProductReviews({ language }) {
   return (
     <Box mt={4} maxWidth="lg" mx="auto" px={2}>
       <Typography variant="h4" component="h2" gutterBottom align="center">
-        Product Reviews
+        {translations[language].productReviews}
       </Typography>
       
       <Grid container spacing={4}>
@@ -44,7 +45,7 @@ function ProductReviews() {
                 {'★'.repeat(4)}{'☆'.repeat(1)}
               </div>
               <Typography variant="body2" color="textSecondary">
-                from 1238 reviews
+                {translations[language].from} 1238 {translations[language].reviews}
               </Typography>
             </Box>
           </Box>
@@ -78,7 +79,7 @@ function ProductReviews() {
                     {review.likes}
                   </Button>
                   <Button startIcon={<FiThumbsDown />} size="small" sx={{ ml: 2 }}>
-                    Dislike
+                    {translations[language].dislike}
                   </Button>
                 </Box>
               </Paper>

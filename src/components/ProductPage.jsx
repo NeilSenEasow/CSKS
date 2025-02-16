@@ -45,14 +45,14 @@ function ProductPage({ language }) {
         <div className="max-w-xl mx-auto text-center">
           <div className="flex justify-between items-start mb-6">
             <div>
-              <p className="text-gray-500 text-sm mb-1">JOHN LEWIS ANYDAY</p>
+              <p className="text-gray-500 text-sm mb-1">{translations[language].brand}</p>
               <h1 className="text-2xl font-medium mb-2">{translations[language].productTitle}</h1>
               <div className="flex items-center justify-center space-x-4">
                 <p className="text-xl font-medium">{price}</p>
                 <div className="flex items-center space-x-2">
                   <span className="text-yellow-400">★</span>
                   <span>4.5</span>
-                  <span className="text-gray-500">(1238 Reviews)</span>
+                  <span className="text-gray-500">({translations[language].reviews})</span>
                 </div>
               </div>
             </div>
@@ -69,13 +69,13 @@ function ProductPage({ language }) {
           {/* Description */}
           <div className="mb-8">
             <p className="text-gray-600">{translations[language].productDescription}</p>
-            <button className="text-gray-600 text-sm mt-2 hover:underline">See More...</button>
+            <button className="text-gray-600 text-sm mt-2 hover:underline">{translations[language].seeMore}</button>
           </div>
 
           {/* Color Selection */}
           <div className="mb-8">
             <div className="flex justify-center mb-2">
-              <p className="font-medium">Color: {selectedColor.name}</p>
+              <p className="font-medium">{translations[language].color}: {selectedColor.name}</p>
             </div>
             <div className="flex justify-center space-x-3">
               {colors.map((color) => (
@@ -94,7 +94,7 @@ function ProductPage({ language }) {
           {/* Size Selection */}
           <div className="mb-8">
             <div className="flex justify-center mb-2">
-              <p className="font-medium">Size: {selectedSize}</p>
+              <p className="font-medium">{translations[language].size}: {selectedSize}</p>
             </div>
             <div className="grid grid-cols-6 gap-2">
               {sizes.map((size) => (
@@ -116,10 +116,10 @@ function ProductPage({ language }) {
           {/* Add to Cart */}
           <div className="space-y-3">
             <button className="w-full bg-black text-white py-3 px-6 font-medium hover:bg-gray-900">
-              Add To Cart
+              {translations[language].addToCart}
             </button>
             <button className="w-full border border-black py-3 px-6 font-medium hover:bg-gray-50">
-              Checkout Now
+              {translations[language].checkoutNow}
             </button>
           </div>
 
@@ -142,7 +142,7 @@ function ProductPage({ language }) {
 
       {/* Related Products Section */}
       <div className="mt-16 max-w-6xl mx-auto px-4">
-        <h2 className="text-2xl font-semibold mb-8">Related Products</h2>
+        <h2 className="text-2xl font-semibold mb-8">{translations[language].relatedProducts}</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="group cursor-pointer">
             <div className="mb-4 overflow-hidden aspect-square">
@@ -183,7 +183,7 @@ function ProductPage({ language }) {
       </div>
 
       {/* Reviews Section */}
-      <ProductReviews />
+      <ProductReviews language={language} />
 
       {/* Related Products */}
       <RelatedProducts />

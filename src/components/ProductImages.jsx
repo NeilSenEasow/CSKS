@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import './ProductImages.css'; // Import the CSS file
 
 function ProductImages({ selectedImage, setSelectedImage }) {
   const [images, setImages] = useState([
@@ -29,7 +30,7 @@ function ProductImages({ selectedImage, setSelectedImage }) {
               <img 
                 src={image} 
                 alt={`Product ${index + 1}`} 
-                className={`w-full h-full object-cover ${selectedImage === index ? 'border-2 border-black' : ''}`}
+                className={`w-full h-full object-cover carousel-image ${selectedImage === index ? 'border-2 border-black' : ''}`}
               />
             </div>
           ))}

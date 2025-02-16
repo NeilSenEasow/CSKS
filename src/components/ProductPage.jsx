@@ -18,6 +18,7 @@ function ProductPage({ language }) {
   const [selectedColor, setSelectedColor] = useState(colors[0])
   const [selectedImage, setSelectedImage] = useState(0)
   const [price, setPrice] = useState('£28.00')
+  const originalPrice = '£35.00'
 
   const handleVariantChange = (color, price) => {
     setSelectedColor(color)
@@ -28,7 +29,7 @@ function ProductPage({ language }) {
     <div className="max-w-full mx-auto px-4 py-8">
       {/* Breadcrumb */}
       <div className="text-sm mb-4 text-left">
-        <span className="text-gray-500">Homepage / Women / Women's Shirts & Tops / </span>
+        <span className="text-gray-500">Homepage / Men / Men's Shirt </span>
         <span>{translations[language].productTitle}</span>
       </div>
 
@@ -37,19 +38,20 @@ function ProductPage({ language }) {
         {/* Left Column - Product Images */}
         <div className="w-full">
           <div className="overflow-hidden rounded-lg shadow-lg">
-            <ProductImages selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+            <ProductImages selectedImage={selectedImage} setSelectedImage={setSelectedImage} style={{ height: '16px', width: '16px' }} /> {/* Reduced height and width for smaller images */}
           </div>
         </div>
 
         {/* Right Column - Product Details */}
-        <div className="w-full text-center">
+        <div className="w-full text-left">
           <div className="flex justify-between items-start mb-6">
             <div>
               <p className="text-gray-500 text-sm mb-1">{translations[language].brand}</p>
               <h1 className="text-2xl font-medium mb-2">{translations[language].productTitle}</h1>
-              <div className="flex items-center justify-center space-x-4">
+              <div className="flex items-center justify-start space-x-4">
                 <p className="text-xl font-medium">{price}</p>
                 <div className="flex items-center space-x-2">
+                  <span className="text-gray-500 line-through">{originalPrice}</span>
                   <span className="text-yellow-400">★</span>
                   <span>4.5</span>
                   <span className="text-gray-500">({translations[language].reviews})</span>
@@ -67,7 +69,7 @@ function ProductPage({ language }) {
           </div>
 
           {/* Description */}
-          <div className="mb-8">
+          <div className="mb-8 text-left">
             <p className="text-gray-600">{translations[language].productDescription}</p>
             <button className="text-gray-600 text-sm mt-2 hover:underline">{translations[language].seeMore}</button>
           </div>
@@ -123,20 +125,6 @@ function ProductPage({ language }) {
             </button>
           </div>
 
-          {/* Additional Information Section */}
-          {/* <div className="mt-8 p-4 border border-gray-200 rounded">
-            <h2 className="text-lg font-semibold mb-2 flex items-center">
-              <FiInfo className="mr-2" /> Additional Information
-            </h2>
-            <p className="text-gray-600">
-              This product is made from high-quality materials and is designed for comfort and style. 
-              Available in multiple sizes and colors, it is perfect for any occasion.
-            </p>
-          </div> */}
-
-          {/* <div className="mt-6">
-            <p className="text-sm text-gray-500">Delivery T&C</p>
-          </div> */}
         </div>
       </div>
 

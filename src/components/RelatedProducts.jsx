@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { translations } from '../translations';
+
 const relatedProducts = [
   {
     id: 1,
@@ -37,11 +40,11 @@ const relatedProducts = [
   }
 ]
 
-function RelatedProducts() {
+function RelatedProducts({ language }) {
   return (
     <div className="mt-16 max-w-6xl mx-auto px-4">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-semibold">Popular Products</h2>
+        <h2 className="text-2xl font-semibold">{translations[language].relatedProducts}</h2>
         <button className="text-sm underline">View All</button>
       </div>
       
@@ -65,7 +68,7 @@ function RelatedProducts() {
                 {'★'.repeat(Math.floor(product.rating))}
                 {'☆'.repeat(5 - Math.floor(product.rating))}
               </div>
-              <span className="text-sm text-gray-500">({product.reviews})</span>
+              <span className="text-sm text-gray-500">({translations[language].reviews}: {product.reviews})</span>
             </div>
           </div>
         ))}

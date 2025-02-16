@@ -25,24 +25,24 @@ function ProductPage({ language }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="max-w-full mx-auto px-4 py-8">
       {/* Breadcrumb */}
-      <div className="text-sm mb-4 text-left" style={{ marginLeft: '60px' }}>
+      <div className="text-sm mb-4 text-left">
         <span className="text-gray-500">Homepage / Women / Women's Shirts & Tops / </span>
         <span>{translations[language].productTitle}</span>
       </div>
 
       {/* Product Info Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-full mx-auto">
         {/* Left Column - Product Images */}
-        <div className="max-w-lg mx-auto"> {/* Increased width for carousel */}
-          <div className="overflow-hidden rounded-lg shadow-lg"> {/* Modular div for carousel */}
+        <div className="w-full">
+          <div className="overflow-hidden rounded-lg shadow-lg">
             <ProductImages selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
           </div>
         </div>
 
         {/* Right Column - Product Details */}
-        <div className="max-w-xl mx-auto text-center">
+        <div className="w-full text-center">
           <div className="flex justify-between items-start mb-6">
             <div>
               <p className="text-gray-500 text-sm mb-1">{translations[language].brand}</p>
@@ -141,9 +141,9 @@ function ProductPage({ language }) {
       </div>
 
       {/* Related Products Section */}
-      <div className="mt-16 max-w-6xl mx-auto px-4">
+      <div className="mt-16 max-w-full mx-auto px-4">
         <h2 className="text-2xl font-semibold mb-8">{translations[language].relatedProducts}</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="group cursor-pointer">
             <div className="mb-4 overflow-hidden aspect-square">
               <img
@@ -186,7 +186,7 @@ function ProductPage({ language }) {
       <ProductReviews language={language} />
 
       {/* Related Products */}
-      <RelatedProducts />
+      <RelatedProducts language={language} />
     </div>
   )
 }

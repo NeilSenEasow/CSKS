@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/product" element={<ProductPage language={language} />} />
       </Routes>
-      <Footer />
+      <Footer language={language} />
     </div>
   )
 }

@@ -13,7 +13,7 @@ function Navbar({ setLanguage }) {
   }
 
   return (
-    <nav className="bg-white border-b">
+    <nav className="bg-white border-b font-sans">
       <div className="max-w-screen-2xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Left section */}

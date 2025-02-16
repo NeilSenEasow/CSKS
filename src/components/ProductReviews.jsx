@@ -1,4 +1,5 @@
-import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi'
+import { Box, Typography, Button, Grid, Paper } from '@mui/material';
+import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
 
 const reviews = [
   {
@@ -25,82 +26,68 @@ const reviews = [
     content: 'This is an amazing product! I love.',
     likes: 0,
   }
-]
+];
 
 function ProductReviews() {
   return (
-    <div className="mt-16 max-w-screen-xl mx-auto px-4">
-      <h2 className="text-2xl font-semibold mb-8 text-center">Product Reviews</h2>
+    <Box mt={4} maxWidth="lg" mx="auto" px={2}>
+      <Typography variant="h4" component="h2" gutterBottom align="center">
+        Product Reviews
+      </Typography>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-        <div className="flex justify-center">
-          <div className="flex items-center space-x-4">
-            <div className="text-4xl font-bold">4.5</div>
-            <div>
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={4}>
+          <Box display="flex" alignItems="center" justifyContent="center">
+            <Typography variant="h2" component="span" fontWeight="bold">4.5</Typography>
+            <Box ml={2}>
               <div className="flex text-yellow-400">
                 {'★'.repeat(4)}{'☆'.repeat(1)}
               </div>
-              <p className="text-sm text-gray-500">from 1238 reviews</p>
-            </div>
-          </div>
-        </div>
+              <Typography variant="body2" color="textSecondary">
+                from 1238 reviews
+              </Typography>
+            </Box>
+          </Box>
+        </Grid>
         
-        <div className="col-span-2">
-          <div className="space-y-2">
-            {[5, 4, 3, 2, 1].map((rating) => (
-              <div key={rating} className="flex items-center space-x-2">
-                <span className="w-8">{rating}★</span>
-                <div className="flex-1 h-2 bg-gray-200 rounded-full">
-                  <div 
-                    className="h-2 bg-yellow-400 rounded-full"
-                    style={{ width: rating === 5 ? '70%' : rating === 4 ? '20%' : '10%' }}
-                  ></div>
-                </div>
-                <span className="w-12 text-right text-sm text-gray-500">
-                  {rating === 5 ? '2023' : rating === 4 ? '39' : '0'}
-                </span>
-              </div>
+        <Grid item xs={12} md={8}>
+          <Box>
+            {reviews.map((review) => (
+              <Paper key={review.id} elevation={3} sx={{ padding: 2, marginBottom: 2 }}>
+                <Box display="flex" alignItems="center" mb={1}>
+                  <div className="flex text-yellow-400">
+                    {'★'.repeat(review.rating)}
+                  </div>
+                  <Typography variant="body2" color="textSecondary" mx={1}>|</Typography>
+                  <Typography variant="body2" color="textSecondary">{review.date}</Typography>
+                </Box>
+                
+                <Typography variant="body1" gutterBottom>{review.content}</Typography>
+                
+                <Box display="flex" alignItems="center">
+                  <img
+                    src={`https://i.pravatar.cc/40?u=${review.id}`}
+                    alt={review.author}
+                    style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '8px' }}
+                  />
+                  <Typography variant="body1" fontWeight="medium">{review.author}</Typography>
+                </Box>
+                
+                <Box display="flex" alignItems="center" mt={1}>
+                  <Button startIcon={<FiThumbsUp />} size="small">
+                    {review.likes}
+                  </Button>
+                  <Button startIcon={<FiThumbsDown />} size="small" sx={{ ml: 2 }}>
+                    Dislike
+                  </Button>
+                </Box>
+              </Paper>
             ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="space-y-8">
-        {reviews.map((review) => (
-          <div key={review.id} className="border-b pb-6">
-            <div className="flex items-center space-x-2 mb-2">
-              <div className="flex text-yellow-400">
-                {'★'.repeat(review.rating)}
-              </div>
-              <span className="text-gray-500">|</span>
-              <span className="text-gray-500">{review.date}</span>
-            </div>
-            
-            <p className="mb-4">{review.content}</p>
-            
-            <div className="flex items-center space-x-4">
-              <img
-                src={`https://i.pravatar.cc/40?u=${review.id}`}
-                alt={review.author}
-                className="w-10 h-10 rounded-full"
-              />
-              <span className="font-medium">{review.author}</span>
-            </div>
-            
-            <div className="flex items-center space-x-6 mt-4">
-              <button className="flex items-center space-x-2">
-                <FiThumbsUp />
-                <span>{review.likes}</span>
-              </button>
-              <button className="flex items-center space-x-2">
-                <FiThumbsDown />
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
+  );
 }
 
-export default ProductReviews
+export default ProductReviews;

@@ -27,7 +27,7 @@ function ProductPage({ language }) {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* Breadcrumb */}
-      <div className="text-sm mb-4 text-left" style={{ marginLeft: '160px' }}>
+      <div className="text-sm mb-4 text-left" style={{ marginLeft: '60px' }}>
         <span className="text-gray-500">Homepage / Women / Women's Shirts & Tops / </span>
         <span>{translations[language].productTitle}</span>
       </div>
@@ -35,8 +35,10 @@ function ProductPage({ language }) {
       {/* Product Info Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
         {/* Left Column - Product Images */}
-        <div className="max-w-xs mx-auto"> {/* Adjusted width for responsiveness */}
-          <ProductImages selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+        <div className="max-w-lg mx-auto"> {/* Increased width for carousel */}
+          <div className="overflow-hidden rounded-lg shadow-lg"> {/* Modular div for carousel */}
+            <ProductImages selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+          </div>
         </div>
 
         {/* Right Column - Product Details */}
